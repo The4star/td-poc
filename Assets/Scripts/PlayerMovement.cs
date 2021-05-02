@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float characterSpeed = 2f;
+    public bool isShooting = false;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -19,13 +20,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _movement.x = Input.GetAxisRaw("Horizontal");
-        _movement.y = Input.GetAxisRaw("Vertical");
+            _movement.x = Input.GetAxisRaw("Horizontal");
+            _movement.y = Input.GetAxisRaw("Vertical");           
     }
 
     private void FixedUpdate()
     {
-        UpdateAnimationAndMove();
+       UpdateAnimationAndMove();
     }
 
     void moveCharacter()
