@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float characterSpeed = 2f;
-    public bool isShooting = false;
+    public bool enemyInStream = false;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -26,7 +26,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       UpdateAnimationAndMove();
+        if (!enemyInStream)
+        {
+            UpdateAnimationAndMove();
+        } 
+    }
+
+    private void LateUpdate()
+    {
+        if (enemyInStream)
+        {
+            _animator.SetBool("moving", false);
+        }
     }
 
     void moveCharacter()
